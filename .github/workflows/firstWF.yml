@@ -1,20 +1,19 @@
-name: 01 - Firstworkflow
-on: 
-    - push
-    - workflow_dispatch
+name: 01 - First WorkFlow
+
+on:
+  workflow_dispatch:
+
 jobs:
-    echoHello:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Saludar
-              run: echo 'Hello world'
-    echoBye:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Multi-line bash
-              run: |
-               echo "I am"
-               echo "a multi-line"
-               echo "script."
-            - name: Decir adios
-              run: echo "adios"
+  echo-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Saludar
+        run: echo "¡Hola, mundo!"
+
+  echo-goodbye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Paso con éxito
+        run: exit 0
+      - name: Decir adiós
+        run: echo "¡Adiós!"
