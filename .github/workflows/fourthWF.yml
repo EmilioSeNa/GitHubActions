@@ -19,4 +19,5 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
-        working-directory: my-app
+        working-directory: .github/workflows/my-app
+        
