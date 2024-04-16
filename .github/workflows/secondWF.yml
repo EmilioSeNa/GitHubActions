@@ -6,7 +6,7 @@ on:
       - main
   pull_request:
   schedule:
-    - cron: '* * * * *'
+    - cron: '0 */2 * * *' # Cada 2 horas
   workflow_dispatch:
 
 jobs:
