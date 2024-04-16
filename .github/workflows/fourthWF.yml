@@ -1,9 +1,7 @@
 name: 04 - Uso de Actions
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -21,7 +19,7 @@ jobs:
         run: npm install
              npm ci
         working-directory: .github/workflows/my-app
-        
+
       - name: Run Unit Tests
         run: npm run test
         working-directory: .github/workflows/my-app
