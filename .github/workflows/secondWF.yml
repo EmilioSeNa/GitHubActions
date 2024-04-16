@@ -1,9 +1,9 @@
 name: 02 - Eventos
 
 on:
-  push:
-    branches:
-      - main
+  #push:
+    #branches:
+      #- main
   pull_request:
   schedule:
     - cron: '* * * * *' # Cada 2 horas
