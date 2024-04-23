@@ -19,4 +19,4 @@ jobs:
           echo "Número de ejecución: $GITHUB_RUN_NUMBER"
       - name: Retrieve Variable
         run: |
-           echo "Valor de MY_VAR: ${{ secrets.MY_VAR }}"
+           echo "Valor de MY_VAR: ${{secrets.MY_VAR}}"
