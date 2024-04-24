@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: workflows/my-app
+        working-directory: .github/workflows/my-app
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
