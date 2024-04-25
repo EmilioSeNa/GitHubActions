@@ -5,9 +5,18 @@ on:
     inputs:
       use-cache:
         description: "Whether to execute cache step"
-        type: boolean
+        type : boolean
         default: true
         required: false
+      node-version:
+        description: "Node version"
+        default: "20.x"
+        required: false
+        type: choice
+        options:
+          - "18.x"
+          - "20.x"
+          - "21.x"
 
 jobs:
   build:
@@ -22,12 +31,18 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: 20.x
+          node-version: ${{ github.event.inputs.node-version }}
+
+      - name: Download cached dependencies
+        if: ${{ github.event.inputs.use-cache }}
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: .github/workflows/node_modules
+          key: deps-node-modules-${{ hashFiles('.github/workflows/my-app/package-lock.json') }}
 
       - name: Install dependencies
-        run: npm install
-
-      - name: Install dependencies 2
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
       - name: Testing
