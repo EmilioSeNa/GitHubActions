@@ -22,8 +22,8 @@ jobs:
         id: cache
         uses: actions/cache@v3
         with:
-          path: 15-artifacts/react-app/node_modules
-          key: deps-node-modules-${{ hashFiles('15-artifacts/react-app/package-lock.json') }}
+          path: .github/workflows/my-app/node_modules
+          key: deps-node-modules-${{ hashFiles('.github/workflows/my-app/package-lock.json') }}
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: app
-          path: 15-artifacts/react-app
+          path: .github/workflows/my-app
 
   deploy:
     runs-on: ubuntu-latest
@@ -57,4 +57,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.test-coverage-key }}
-          path: 15-artifacts/react-app/coverage
+          path: .github/workflows/my-app/coverage
